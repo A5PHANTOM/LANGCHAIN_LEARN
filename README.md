@@ -7,6 +7,11 @@
 -Tool retry logic and error handling
 -State persistence across tool calls
 
+
+# @tool decorator is the most common and easiest way to turn a simple Python function into a LangChain Tool.
+
+# When you use @tool, LangChain automatically converts your function's metadata (its name, its type hints, and its docstring) into a JSON Schema that an LLM (like GPT-4) can understand and decide when to call.
+
 ***Static tools*** : Static tools are defined when creating the agent and remain unchanged throughout execution. This is the most common and straightforward approach.
 
 ***Dynamic tools*** : the set of tools available to the agent is modified at runtime rather than defined all upfront. Not every tool is appropriate for every situation. Too many tools may overwhelm the model (overload context) and increase errors; too few limit capabilities. Dynamic tool selection enables adapting the available toolset based on authentication state, user permissions, feature flags, or conversation stage.
@@ -18,5 +23,21 @@ There are two approaches depending on whether tools are known ahead of time:
         *State* : Enable advanced tools only after certain conversation milestones
         *Store*
         *Runtime Context*
+2.*Runtime tool registration* : When tools are discovered or created at runtime (e.g., loaded from an MCP server, generated based on user data, or fetched from a remote registry), you need to both register the tools and handle their execution dynamically.
+
+This requires two middleware hooks:
+**wrap_model_call** - Add the dynamic tools to the request
+**wrap_tool_call** - Handle execution of the dynamically added tools
+
+**ReAct Loop** : Agents follow the ReAct (“Reasoning + Acting”) pattern, alternating between brief reasoning steps with targeted tool calls and feeding the resulting observations into subsequent decisions until they can deliver a final answer.
+
+
+**SYSTEM PROMPY** :You can shape how your agent approaches tasks by providing a prompt. 
+<!-- agent = create_agent(
+    model,
+    tools,
+    system_prompt="You are a helpful assistant. Be concise and accurate."
+) -->
+
 
 
