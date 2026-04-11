@@ -32,12 +32,33 @@ This requires two middleware hooks:
 **ReAct Loop** : Agents follow the ReAct (“Reasoning + Acting”) pattern, alternating between brief reasoning steps with targeted tool calls and feeding the resulting observations into subsequent decisions until they can deliver a final answer.
 
 
-**SYSTEM PROMPY** :You can shape how your agent approaches tasks by providing a prompt. 
+**SYSTEM PROMPTING** :You can shape how your agent approaches tasks by providing a prompt. 
 <!-- agent = create_agent(
     model,
     tools,
     system_prompt="You are a helpful assistant. Be concise and accurate."
 ) -->
 
+**Dynamic system prompt** :For more advanced use cases where you need to modify the system prompt based on runtime context or agent state, you can use middleware.
 
+- The @dynamic_prompt decorator creates middleware that generates system prompts based on the model request
+
+**NAME** : Set an optional name for the agent. This is used as the node identifier when adding the agent as a subgraph in multi-agent systems
+<!-- agent = create_agent(
+    model,
+    tools,
+    name="research_assistant"
+) -->
+
+**Invocation** :You can invoke an agent by passing an update to its State. All agents include a sequence of messages in their state; to invoke the agent, pass a new message
+
+<!-- result = agent.invoke(
+    {"messages": [{"role": "user", "content": "What's the weather in San Francisco?"}]}
+) -->
+
+# ADVANCED CONCEPTS
+
+***Structured Output*** :In some situations, you may want the agent to return an output in a specific format. LangChain provides strategies for structured output via the response_format parameter.
+
+- **ToolStrategy** : ToolStrategy uses artificial tool calling to generate structured output. This works with any model that supports tool calling
 
