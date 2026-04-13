@@ -92,3 +92,6 @@ System message — defines the assistant's behavior/role
 User message — first request
 Assistant message — first response (already provided as context)
 User message — second request (the one the model needs to respond to)
+
+# Batch
+Batching a collection of independent requests to a model can significantly improve performance and reduce costs, as the processing can be done in parallel
