@@ -95,3 +95,8 @@ User message — second request (the one the model needs to respond to)
 
 # Batch
 Batching a collection of independent requests to a model can significantly improve performance and reduce costs, as the processing can be done in parallel
+
+
+# Structured output
+
+Models can be requested to provide their response in a format matching a given schema. This is useful for ensuring the output can be easily parsed and used in subsequent processing. LangChain supports multiple schema types and methods for enforcing structured output.
