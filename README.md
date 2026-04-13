@@ -62,3 +62,18 @@ This requires two middleware hooks:
 
 - **ToolStrategy** : ToolStrategy uses artificial tool calling to generate structured output. This works with any model that supports tool calling
 
+# MEMORY
+
+Agents maintain conversation history automatically through the message state. You can also configure the agent to use a custom state schema to remember additional information during the conversation
+
+Information stored in the state can be thought of as the short-term memory of the agent:
+Custom state schemas must extend AgentState as a TypedDict.
+There are two ways to define custom state:
+Via middleware (preferred)
+Via state_schema on create_agent
+
+***​Defining state via middleware*** : Use middleware to define custom state when your custom state needs to be accessed by specific middleware hooks and tools attached to said middleware.
+
+
+# Streaming
+f the agent executes multiple steps, this may take a while. To show intermediate progress, we can stream back messages as they occur.
