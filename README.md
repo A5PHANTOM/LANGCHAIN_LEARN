@@ -73,3 +73,7 @@ Via middleware (preferred)
 Via state_schema on create_agent
 
 ***​Defining state via middleware*** : Use middleware to define custom state when your custom state needs to be accessed by specific middleware hooks and tools attached to said middleware.
+
+
+# Streaming
+f the agent executes multiple steps, this may take a while. To show intermediate progress, we can stream back messages as they occur.
