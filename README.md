@@ -100,3 +100,8 @@ Batching a collection of independent requests to a model can significantly impro
 # Structured output
 
 Models can be requested to provide their response in a format matching a given schema. This is useful for ensuring the output can be easily parsed and used in subsequent processing. LangChain supports multiple schema types and methods for enforcing structured output.
+
+
+ # Reasoning
+ 
+Many models are capable of performing multi-step reasoning to arrive at a conclusion. This involves breaking down complex problems into smaller, more manageable steps.
