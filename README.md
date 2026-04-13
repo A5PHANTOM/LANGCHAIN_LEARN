@@ -77,3 +77,18 @@ Via state_schema on create_agent
 
 # Streaming
 f the agent executes multiple steps, this may take a while. To show intermediate progress, we can stream back messages as they occur.
+
+
+ **temperature** : Controls the randomness of the model’s output. A higher number makes responses more creative; lower ones make them more deterministic.
+
+
+**max_tokens** : Limits the total number of tokens in the response, effectively controlling how long the output can be.
+
+**timeout number** : The maximum time (in seconds) to wait for a response from the model before canceling the request.
+
+# MESSAGING
+
+System message — defines the assistant's behavior/role
+User message — first request
+Assistant message — first response (already provided as context)
+User message — second request (the one the model needs to respond to)
