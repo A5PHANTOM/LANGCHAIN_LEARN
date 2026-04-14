@@ -103,5 +103,13 @@ Models can be requested to provide their response in a format matching a given s
 
 
  # Reasoning
- 
+
 Many models are capable of performing multi-step reasoning to arrive at a conclusion. This involves breaking down complex problems into smaller, more manageable steps.
+
+
+# MESSAGES
+Messages are the fundamental unit of context for models in LangChain. They represent the input and output of models, carrying both the content and metadata needed to represent the state of a conversation when interacting with an LLM.
+Messages are objects that contain:
+ Role - Identifies the message type (e.g. system, user)
+ Content - Represents the actual content of the message (like text, images, audio, documents, etc.)
+ Metadata - Optional fields such as response information, message IDs, and token usage
